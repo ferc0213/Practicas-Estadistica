@@ -1,0 +1,63 @@
+#######################################################################################################################################
+# Teoría
+
+1. b
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+2. a
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+3. En la primera forma 
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+4. HAVING solo se usa para grupos y WHERE para las filas individuales
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+5.c
+#######################################################################################################################################
+# Práctica
+
+1.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT avg(edad) edad_promedio
+FROM alumnos
+WHERE apellido LIKE "%ez";
+```
+
+2.
+
+```SQL
+-- poner solución debajo de este mensaje
+SELECT
+	nombre_materia,
+	COUNT(expediente) AS num
+FROM
+	alumnos 
+INNER JOIN 
+	calificaciones 
+USING(expediente)
+WHERE edad > 20
+GROUP BY nombre_materia
+ORDER BY num DESC;
+
+3.
+
+```SQL
+-- poner solución debajo de este mensaje
+SELECT
+	nombre, sum (calificacion) as Calif
+FROM
+	alumnos 
+INNER JOIN 
+	calificaciones 
+USING(expediente)
+WHERE nombre_materia = "Matemáticas" AND calificacion IS NOT NULL
+GROUP BY nombre
+ORDER BY calificacion DESC
+LIMIT 1 OFFSET 1;
+
+
+```
